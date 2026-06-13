@@ -2,12 +2,13 @@
 
 >>> text_indentation("Hello. World?")
 Hello.
-
+<BLANKLINE>
 World?
+<BLANKLINE>
 
 >>> text_indentation("Hi: there")
 Hi:
-
+<BLANKLINE>
 there
 
 >>> text_indentation("Holberton School")
