@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-"""Module that adds two integers."""
+"""Module that contains add_integer function."""
 
 
 def add_integer(a, b=98):
-    """Add two integers and return the result."""
+    """Add two integers after casting floats to integers."""
 
     if not isinstance(a, (int, float)):
         raise TypeError("a must be an integer")
@@ -11,10 +11,7 @@ def add_integer(a, b=98):
     if not isinstance(b, (int, float)):
         raise TypeError("b must be an integer")
 
-    if a != a:
-        raise TypeError("a must be an integer")
+    a = int(a)
+    b = int(b)
 
-    if b != b:
-        raise TypeError("b must be an integer")
-
-    return int(a) + int(b)
+    return a + b
