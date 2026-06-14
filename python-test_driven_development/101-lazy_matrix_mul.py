@@ -13,6 +13,9 @@ def lazy_matrix_mul(m_a, m_b):
     try:
         return np.dot(m_a, m_b)
     except Exception as e:
-        if "data type must provide an itemsize" in str(e):
+        msg = str(e)
+        if "data type must provide an itemsize" in msg:
             raise TypeError("invalid data type for einsum")
+        if "setting an array element with a sequence" in msg:
+            raise ValueError("setting an array element with a sequence.")
         raise
