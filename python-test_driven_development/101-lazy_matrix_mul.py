@@ -12,7 +12,7 @@ def lazy_matrix_mul(m_a, m_b):
 
     try:
         return np.dot(m_a, m_b)
-    except TypeError as e:
+    except Exception as e:
         if "data type must provide an itemsize" in str(e):
             raise TypeError("invalid data type for einsum")
         raise
