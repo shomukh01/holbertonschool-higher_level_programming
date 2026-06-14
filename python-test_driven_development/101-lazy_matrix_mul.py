@@ -10,4 +10,9 @@ def lazy_matrix_mul(m_a, m_b):
     if type(m_a) is str or type(m_b) is str:
         raise ValueError("Scalar operands are not allowed, use '*' instead")
 
-    return np.einsum("ij,jk->ik", m_a, m_b)
+    try:
+        return np.dot(m_a, m_b)
+    except TypeError as e:
+        if "data type must provide an itemsize" in str(e):
+            raise TypeError("invalid data type for einsum")
+        raise
