@@ -10,4 +10,4 @@ def lazy_matrix_mul(m_a, m_b):
     if type(m_a) is str or type(m_b) is str:
         raise ValueError("Scalar operands are not allowed, use '*' instead")
 
-    return np.dot(m_a, m_b)
+    return np.einsum("ij,jk->ik", m_a, m_b)
