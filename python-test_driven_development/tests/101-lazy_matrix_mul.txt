@@ -16,59 +16,68 @@ One row by two rows:
 >>> lazy_matrix_mul([[1, 2]], [[3, 4], [5, 6]])
 array([[13, 16]])
 
-Different valid sizes:
-
->>> lazy_matrix_mul([[1, 2, 3]], [[1], [2], [3]])
-array([[14]])
-
 m_a is string:
 
 >>> lazy_matrix_mul("Holberton", [[5, 6], [7, 8]])
 Traceback (most recent call last):
 ...
-ValueError: matmul: Input operand 0 does not have enough dimensions ...
+ValueError: Scalar operands are not allowed, use '*' instead
 
 m_b is string:
 
 >>> lazy_matrix_mul([[5, 6], [7, 8]], "Holberton")
 Traceback (most recent call last):
 ...
-ValueError: matmul: Input operand 1 does not have enough dimensions ...
+ValueError: Scalar operands are not allowed, use '*' instead
 
 m_a is empty:
 
 >>> lazy_matrix_mul([[]], [[5, 6], [7, 8]])
 Traceback (most recent call last):
 ...
-ValueError: matmul: Input operand 0 has a mismatch in its core dimension ...
+ValueError: shapes (1,0) and (2,2) not aligned: 0 (dim 1) != 2 (dim 0)
 
 m_b is empty:
 
 >>> lazy_matrix_mul([[5, 6], [7, 8]], [[]])
 Traceback (most recent call last):
 ...
-ValueError: matmul: Input operand 1 has a mismatch in its core dimension ...
+ValueError: shapes (2,2) and (1,0) not aligned: 2 (dim 1) != 1 (dim 0)
 
 m_a contains string:
 
 >>> lazy_matrix_mul([[5, "6"], [7, 8]], [[5, 6], [7, 8]])
 Traceback (most recent call last):
 ...
-TypeError: can't multiply sequence by non-int of type 'str'
+TypeError: invalid data type for einsum
 
 m_b contains string:
 
 >>> lazy_matrix_mul([[5, 6], [7, 8]], [[5, "6"], [7, 8]])
 Traceback (most recent call last):
 ...
-TypeError: unsupported operand type(s) for +: 'int' and 'str'
+TypeError: invalid data type for einsum
+
+m_a is not rectangle:
+
+>>> lazy_matrix_mul([[5, 6, 10], [7, 8]], [[5, 6], [7, 8]])
+Traceback (most recent call last):
+...
+ValueError: setting an array element with a sequence.
+
+m_b is not rectangle:
+
+>>> lazy_matrix_mul([[5, 6], [7, 8]], [[5, 6, 1], [7, 8]])
+Traceback (most recent call last):
+...
+ValueError: setting an array element with a sequence.
 
 Cannot multiply:
 
 >>> lazy_matrix_mul([[1, 2, 3], [3, 4, 5]], [[1, 2], [3, 4]])
 Traceback (most recent call last):
 ...
-ValueError: matmul: Input operand 1 has a mismatch in its core dimension ...
+ValueError: shapes (2,3) and (2,2) not aligned: 3 (dim 1) != 2 (dim 0)
 
 Missing one argument:
 
