@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Module that contains the class_to_json function."""
+"""Class to JSON."""
 
 
 def class_to_json(obj):
