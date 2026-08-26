@@ -1,22 +1,20 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
   const list = document.querySelector('.my_list');
-  const addItem = document.querySelector('#add_item');
-  const removeItem = document.querySelector('#remove_item');
-  const clearList = document.querySelector('#clear_list');
 
-  addItem.addEventListener('click', () => {
+  document.querySelector('#add_item').addEventListener('click', function () {
     const newItem = document.createElement('li');
     newItem.textContent = 'Item';
     list.appendChild(newItem);
   });
 
-  removeItem.addEventListener('click', () => {
-    if (list.lastElementChild) {
-      list.removeChild(list.lastElementChild);
+  document.querySelector('#remove_item').addEventListener('click', function () {
+    const lastItem = list.lastElementChild;
+    if (lastItem) {
+      list.removeChild(lastItem);
     }
   });
 
-  clearList.addEventListener('click', () => {
+  document.querySelector('#clear_list').addEventListener('click', function () {
     list.innerHTML = '';
   });
 });
