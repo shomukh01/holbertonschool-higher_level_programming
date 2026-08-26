@@ -1,8 +1,5 @@
-const addItem = document.querySelector('#add_item');
-const list = document.querySelector('.my_list');
-
-addItem.addEventListener('click', () => {
+document.querySelector('#add_item').addEventListener('click', function () {
   const newItem = document.createElement('li');
   newItem.textContent = 'Item';
-  list.appendChild(newItem);
+  document.querySelector('.my_list').appendChild(newItem);
 });
